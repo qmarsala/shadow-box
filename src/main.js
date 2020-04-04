@@ -1,21 +1,28 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import App from './App.vue';
+import store from './store'
+import FlowRunner from './components/FlowRunner'
+import FlowManager from './components/FlowManager'
+import ComboBuilder from './components/ComboBuilder'
 
-Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
 const routes = [
-  { path: '/', component: App }
+  { path: '/', redirect: 'run-flow' },
+  { path: '/run-flow', component: FlowRunner },
+  { path: '/configure-flow', component: FlowManager },
+  { path: '/create-combo', component: ComboBuilder }
 ];
 
 const router = new VueRouter({
-  routes 
+  routes,
+  linkActiveClass: 'active'
 });
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app');
