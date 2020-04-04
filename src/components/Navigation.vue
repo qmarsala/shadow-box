@@ -18,12 +18,11 @@
           <router-link class="nav-link" to="/run-flow">Run Flow</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/create-combo">Create a Combo</router-link>
-        </li>
-        <li class="nav-item">
           <router-link class="nav-link" to="/configure-flow">Configure Flow</router-link>
         </li>
-        <li class="nav-item"></li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/create-combo">Create a Combo</router-link>
+        </li>
       </ul>
     </div>
   </nav>
