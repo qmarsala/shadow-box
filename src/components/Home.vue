@@ -2,8 +2,8 @@
   <div class="card-columns">
     <div class="card" v-for="(move, index) in moves" :key="index">
       <div class="card-body">
-        <Move v-if="move" v-bind:moveData="move" v-bind:animate="false"/>
-        <button class="btn btn-light">Learn this move</button>
+        <Move v-if="move" v-bind:moveData="move" v-bind:animate="false" />
+        <button class="btn btn-light" v-on:click="onLearnClicked(move.shorthand)">Learn this move</button>
       </div>
     </div>
   </div>
@@ -30,6 +30,11 @@ export default {
         { name: "Block", shorthand: "B" }
       ]
     };
+  },
+  methods: {
+    onLearnClicked: function(shorthand) {
+      this.$router.push(`/learn-move/${shorthand}`);
+    }
   }
 };
 </script>
