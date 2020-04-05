@@ -7,8 +7,8 @@
     </div>
     <div v-if="running">
       <div class="combo-name">"{{ comboName }}"</div>
-      <move v-if="currentMove" v-bind:moveData="currentMove" v-bind:animate="true"></move>
-      <flow-preview v-bind:moves="moves" v-bind:currentIndex="currentMoveIndex"></flow-preview>
+      <Move v-if="currentMove" v-bind:moveData="currentMove" v-bind:animate="true" />
+      <FlowPreview v-bind:moves="moves" v-bind:currentIndex="currentMoveIndex"/>
     </div>
   </div>
 </template>
