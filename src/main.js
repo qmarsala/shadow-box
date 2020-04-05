@@ -5,12 +5,13 @@ import store from './store'
 import FlowRunner from './components/FlowRunner'
 import FlowManager from './components/FlowManager'
 import ComboBuilder from './components/ComboBuilder'
+import Home from './components/Home'
 
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
 const routes = [
-  { path: '/', redirect: 'run-flow' },
+  { path: '/', component: Home },
   { path: '/run-flow', component: FlowRunner },
   { path: '/configure-flow', component: FlowManager },
   { path: '/create-combo', component: ComboBuilder }

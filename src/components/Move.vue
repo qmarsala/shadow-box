@@ -1,34 +1,45 @@
 <template>
   <div :key="moveData.id" class="move-container mx-auto">
     <div>{{moveData.name}}</div>
-    <div class="animated move" v-bind:class="moveClass" v-bind:data-move="moveData.shorthand"></div>
+    <div class="move" v-bind:class="moveClass" v-bind:data-move="moveData.shorthand"></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["moveData"],
+  props: ["moveData", "animate"],
   computed: {
     moveClass: function() {
+      if (!this.animate) return "";
+      
+      let classString = "animated ";
       switch (this.moveData.shorthand) {
         case "B":
-          return "bounceIn";
+          classString += "bounceIn";
+          break;
         case "R":
-          return "rotateIn";
+          classString += "rotateIn";
+          break;
         case "S":
-          return "rotateInDownLeft";
+          classString += "rotateInDownLeft";
+          break;
         case "3":
-          return "fadeInLeft";
+          classString += "fadeInLeft";
+          break;
         case "4":
-          return "fadeInRight";
+          classString += "fadeInRight";
+          break;
         case "5":
         case "6":
-          return "fadeInUp";
+          classString += "fadeInUp";
+          break;
         case "1":
         case "2":
         default:
-          return "fadeIn";
+          classString += "fadeIn";
+          break;
       }
+      return classString;
     }
   }
 };

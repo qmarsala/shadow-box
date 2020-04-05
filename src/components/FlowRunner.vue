@@ -7,21 +7,21 @@
     </div>
     <div v-if="running">
       <div class="combo-name">"{{ comboName }}"</div>
-      <move v-if="currentMove" v-bind:moveData="currentMove"></move>
-      <!-- <flow-preview v-bind:moves="moves" v-bind:currentIndex="currentMoveIndex"></flow-preview> -->
+      <move v-if="currentMove" v-bind:moveData="currentMove" v-bind:animate="true"></move>
+      <flow-preview v-bind:moves="moves" v-bind:currentIndex="currentMoveIndex"></flow-preview>
     </div>
   </div>
 </template>
 
 <script>
 import Move from "./Move";
-// import FlowPreview from "./FlowPreview";
+import FlowPreview from "./FlowPreview";
 import { mapState } from "vuex";
 
 export default {
   components: {
-    Move//,
-    // FlowPreview
+    Move,
+    FlowPreview
   },
   data: function() {
     return {
