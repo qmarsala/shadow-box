@@ -24,6 +24,22 @@
           <router-link class="nav-link" to="/create-combo">Create a Combo</router-link>
         </li>
       </ul>
+      <button class="btn btn-sm btn-outline-light" v-on:click="toggleStance">Enable {{stanceText}}</button>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  computed: {
+    stanceText: function () {
+      return this.$store.state.isSouthpawStanceEnabled ? 'Regular stance' : 'Southpaw stance'
+    }
+  },
+  methods: {
+    toggleStance: function() {
+      this.$store.dispatch('toggleStance');
+    }
+  }
+}
+</script>

@@ -9,6 +9,19 @@ Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
+    state: {
+        isSouthpawStanceEnabled: false
+    },
+    actions: {
+        toggleStance({ commit }) {
+            commit("toggleStance")
+        }
+    },
+    mutations: {
+        toggleStance(state) {
+            state.isSouthpawStanceEnabled = !state.isSouthpawStanceEnabled
+        }
+    },
     modules: {
         combos,
         flow

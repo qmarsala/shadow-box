@@ -1,7 +1,7 @@
 <template>
   <div :key="moveData.id" class="move-container mx-auto">
     <div>{{moveData.name}}</div>
-    <div class="move" v-bind:class="moveClass" v-bind:data-move="moveData.shorthand"></div>
+    <div class="move" v-bind:class="moveClass" v-bind:data-move="dataMove"></div>
   </div>
 </template>
 
@@ -9,9 +9,12 @@
 export default {
   props: ["moveData", "animate"],
   computed: {
+    dataMove: function() {
+      return `${this.moveData.shorthand}${this.$store.state.isSouthpawStanceEnabled ? '-southpaw':''}`;
+    },
     moveClass: function() {
       if (!this.animate) return "";
-      
+
       let classString = "animated ";
       switch (this.moveData.shorthand) {
         case "B":
@@ -63,35 +66,59 @@ export default {
   background-image: url(../assets/jab.png);
 }
 
+.move[data-move="1-southpaw"] {
+  background-image: url(../assets/cross.png);
+}
+
 .move[data-move="2"] {
   background-image: url(../assets/cross.png);
+}
+
+.move[data-move="2-southpaw"] {
+  background-image: url(../assets/jab.png);
 }
 
 .move[data-move="3"] {
   background-image: url(../assets/leadhook.png);
 }
 
+.move[data-move="3-southpaw"] {
+  background-image: url(../assets/hook.png);
+}
+
 .move[data-move="4"] {
   background-image: url(../assets/hook.png);
+}
+
+.move[data-move="4-southpaw"] {
+  background-image: url(../assets/leadhook.png);
 }
 
 .move[data-move="5"] {
   background-image: url(../assets/leaduppercut.png);
 }
 
+.move[data-move="5-southpaw"] {
+  background-image: url(../assets/uppercut.png);
+}
+
 .move[data-move="6"] {
   background-image: url(../assets/uppercut.png);
 }
 
-.move[data-move="B"] {
+.move[data-move="6-southpaw"] {
+  background-image: url(../assets/leaduppercut.png);
+}
+
+.move[data-move*="B"] {
   background-image: url(../assets/block.png);
 }
 
-.move[data-move="R"] {
+.move[data-move*="R"] {
   background-image: url(../assets/roll.png);
 }
 
-.move[data-move="S"] {
+.move[data-move*="S"] {
   background-image: url(../assets/slip.png);
 }
 </style>
