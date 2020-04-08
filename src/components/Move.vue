@@ -6,11 +6,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   props: ["moveData", "animate"],
   computed: {
+    ...mapState(["isSouthpawStanceEnabled"]),
     dataMove: function() {
-      return `${this.moveData.shorthand}${this.$store.state.isSouthpawStanceEnabled ? '-southpaw':''}`;
+      return `${this.moveData.shorthand}${
+        this.isSouthpawStanceEnabled ? "-southpaw" : ""
+      }`;
     },
     moveClass: function() {
       if (!this.animate) return "";
@@ -27,10 +31,10 @@ export default {
           classString += "rotateInDownLeft";
           break;
         case "3":
-          classString += "fadeInLeft";
+          classString += this.isSouthpawStanceEnabled ? "fadeInRight" : "fadeInLeft";
           break;
         case "4":
-          classString += "fadeInRight";
+          classString += this.isSouthpawStanceEnabled ? "fadeInLeft" : "fadeInRight";
           break;
         case "5":
         case "6":
