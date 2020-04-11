@@ -1,21 +1,37 @@
 const state = {
-    running: false
+    running: false,
+    flowMoves: []
 }
 
 const getters = {}
 
 const actions = {
+    async createFlow({ commit }, combos) {
+        let flowMoves = [];
+        for (const combo of combos) {
+            for (const move of combo.moves) {
+                flowMoves.push({
+                    ...move,
+                    comboName: combo.name
+                });
+            }
+        }
+        commit("setFlowMoves", flowMoves);
+    },
     async start({ commit }) {
-        commit("changeRunning", true)
+        commit("setRunning", true);
     },
     async stop({ commit }) {
-        commit("changeRunning", false)
+        commit("setRunning", false);
     }
 }
 
 const mutations = {
-    changeRunning(state, running) {
-        state.running = running
+    setFlowMoves(state, flowMoves) {
+        state.flowMoves = flowMoves;
+    },
+    setRunning(state, running) {
+        state.running = running;
     }
 }
 

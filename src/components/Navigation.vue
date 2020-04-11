@@ -15,13 +15,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link class="nav-link" to="/run-flow">Run Flow</router-link>
+          <router-link class="nav-link" to="/create-combo">Create a Combo</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/configure-flow">Configure Flow</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/create-combo">Create a Combo</router-link>
+          <router-link class="nav-link" to="/run-flow">Run Flow</router-link>
         </li>
       </ul>
       <button class="btn btn-sm btn-outline-light" v-on:click="toggleStance">Enable {{stanceText}}</button>
