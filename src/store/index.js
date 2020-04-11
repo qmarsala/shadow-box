@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import combos from './modules/combos';
+import moves from './modules/moves';
 import flow from './modules/flow';
 
 Vue.use(Vuex)
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     },
     modules: {
         combos,
+        moves,
         flow
     },
     strict: debug

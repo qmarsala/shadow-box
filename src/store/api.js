@@ -7,10 +7,21 @@ const client = axios.create({
     timeout: 3000,
 });
 
+async function getMoves() {
+    try {
+        const response = await client.get('/moves');
+        console.log('get moves');
+        console.log(response);
+        return response.data.moves;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function getCombos() {
     try {
         const response = await client.get('/combos');
-        return response.data;
+        return response.data.combos;
     } catch (error) {
         console.error(error);
     }
@@ -27,5 +38,6 @@ async function createCombo(payload) {
 
 export default {
     getCombos,
+    getMoves,
     createCombo
 }

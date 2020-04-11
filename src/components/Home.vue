@@ -11,30 +11,24 @@
 
 <script>
 import Move from "./Move";
+import { mapState } from 'vuex';
 
 export default {
   components: {
     Move
   },
-  data: function() {
-    return {
-      moves: [
-        { name: "Jab", shorthand: "1" },
-        { name: "Lead Hook", shorthand: "3" },
-        { name: "Lead Uppercut", shorthand: "5" },
-        { name: "Cross", shorthand: "2" },
-        { name: "Hook", shorthand: "4" },
-        { name: "Uppercut", shorthand: "6" },
-        { name: "Slip", shorthand: "S" },
-        { name: "Roll", shorthand: "R" },
-        { name: "Block", shorthand: "B" }
-      ]
-    };
+  computed: {
+    ...mapState({
+      moves: state => state.moves.all
+    })
   },
   methods: {
     onLearnClicked: function(shorthand) {
       this.$router.push(`/learn-move/${shorthand}`);
     }
+  },
+  created: function() {
+    this.$store.dispatch("moves/getAllMoves");
   }
 };
 </script>
