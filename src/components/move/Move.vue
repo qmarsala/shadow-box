@@ -67,62 +67,62 @@ export default {
 }
 
 .move[data-move="1"] {
-  background-image: url(../assets/jab.png);
+  background-image: url(../../assets/jab.png);
 }
 
 .move[data-move="1-southpaw"] {
-  background-image: url(../assets/cross.png);
+  background-image: url(../../assets/cross.png);
 }
 
 .move[data-move="2"] {
-  background-image: url(../assets/cross.png);
+  background-image: url(../../assets/cross.png);
 }
 
 .move[data-move="2-southpaw"] {
-  background-image: url(../assets/jab.png);
+  background-image: url(../../assets/jab.png);
 }
 
 .move[data-move="3"] {
-  background-image: url(../assets/leadhook.png);
+  background-image: url(../../assets/leadhook.png);
 }
 
 .move[data-move="3-southpaw"] {
-  background-image: url(../assets/hook.png);
+  background-image: url(../../assets/hook.png);
 }
 
 .move[data-move="4"] {
-  background-image: url(../assets/hook.png);
+  background-image: url(../../assets/hook.png);
 }
 
 .move[data-move="4-southpaw"] {
-  background-image: url(../assets/leadhook.png);
+  background-image: url(../../assets/leadhook.png);
 }
 
 .move[data-move="5"] {
-  background-image: url(../assets/leaduppercut.png);
+  background-image: url(../../assets/leaduppercut.png);
 }
 
 .move[data-move="5-southpaw"] {
-  background-image: url(../assets/uppercut.png);
+  background-image: url(../../assets/uppercut.png);
 }
 
 .move[data-move="6"] {
-  background-image: url(../assets/uppercut.png);
+  background-image: url(../../assets/uppercut.png);
 }
 
 .move[data-move="6-southpaw"] {
-  background-image: url(../assets/leaduppercut.png);
+  background-image: url(../../assets/leaduppercut.png);
 }
 
 .move[data-move*="B"] {
-  background-image: url(../assets/block.png);
+  background-image: url(../../assets/block.png);
 }
 
 .move[data-move*="R"] {
-  background-image: url(../assets/roll.png);
+  background-image: url(../../assets/roll.png);
 }
 
 .move[data-move*="S"] {
-  background-image: url(../assets/slip.png);
+  background-image: url(../../assets/slip.png);
 }
 </style>

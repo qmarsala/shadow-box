@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Move from "./Move";
+import Move from "./move/Move";
 import FlowPreview from "./FlowPreview";
 import { mapState } from "vuex";
 

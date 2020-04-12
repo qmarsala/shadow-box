@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Move from "./Move";
+import Move from "./move/Move";
 import { mapState } from 'vuex';
 
 export default {

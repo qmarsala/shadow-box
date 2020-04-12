@@ -1,7 +1,7 @@
 <template>
   <div>
     <ComboBuilder />
-    <form>
+    <div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -21,8 +21,8 @@
         </tbody>
       </table>
       <button class="btn btn-outline-primary" v-on:click="saveFlow">Save</button>
-    </form>
-  <div>
+    </div>
+  </div>
 </template>
 
 <script>
