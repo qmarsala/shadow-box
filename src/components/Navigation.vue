@@ -15,6 +15,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
+          <router-link class="nav-link" to="/create-combo">Create Combo</router-link>
+        </li>
+        <li class="nav-item">
           <router-link class="nav-link" to="/configure-flow">Configure Flow</router-link>
         </li>
         <li class="nav-item">

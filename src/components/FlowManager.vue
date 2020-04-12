@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ComboBuilder />
     <div>
       <table class="table table-striped">
         <thead>
@@ -20,8 +19,10 @@
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-outline-primary" v-on:click="saveFlow">Save</button>
+      <button class="btn btn-outline-primary" v-on:click="saveFlow">Save Flow</button>
     </div>
+    <br />
+    <ComboBuilder />
   </div>
 </template>
 

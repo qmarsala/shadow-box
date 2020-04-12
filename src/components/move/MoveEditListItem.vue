@@ -1,13 +1,13 @@
 <template>
   <li class="list-group-item">
     <div class="form-inline">
-      <div class="col-sm-2">{{move.name}} ({{move.shorthand}})</div>
-      <div class="form-group col-sm-2">
+      <div class="mx-auto">{{title}}</div>
+      <div class="col-sm-4 mx-auto">
         <label for="speedControl">Speed</label>
         <input
           id="speedControl"
           type="range"
-          v-bind:value="move.timing"
+          v-bind:value="timing"
           v-on:change="$emit('update:timing', $event.target.value)"
           class="custom-range"
           min="300"
@@ -16,6 +16,9 @@
           style="direction: rtl"
         />
       </div>
+      <div class="mx-auto">
+        <slot></slot>
+      </div>
     </div>
   </li>
 </template>
@@ -23,10 +26,10 @@
 <script>
 export default {
   model: {
-    prop: "move",
-    event: "update:timing"
+    prop: "timing",
+    event: "update:timing",
   },
-  props: ["move"]
+  props: ["timing", "title"]
 };
 </script>
 

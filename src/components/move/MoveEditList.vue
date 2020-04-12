@@ -1,6 +1,13 @@
 <template>
   <ul class="list-group">
-    <MoveEditListItem v-for="(move, index) in moves" v-bind:key="index" v-bind:move="move" v-on:update:timing="move.timing = $event" />
+    <MoveEditListItem
+      v-for="(move, index) in moves"
+      v-bind:key="index"
+      v-bind:title="`${move.name} (${move.shorthand})`"
+      v-bind:timing="move.timing"
+      v-on:update:timing="move.timing = $event">
+      <button class="btn btn-outline-danger" v-on:click="$delete(moves, index)">Remove</button>
+    </MoveEditListItem>
   </ul>
 </template>
 
