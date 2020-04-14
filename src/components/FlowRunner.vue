@@ -9,9 +9,13 @@
           v-bind:value="flow"
         >{{ flow.name }}</option>
       </select>
-      <label for="round-duration">Round Duration (in seconds)</label>
-      <input id="round-duration" v-model="roundDurationSeconds" />
-      <button class="btn btn-primary" v-on:click="run" v-bind:disabled="isDisabled">Run</button>
+      <div class="form-inline my-3">
+        <div class="form-group">
+          <label for="round-duration">Round Duration (in seconds)</label>
+          <input class="form-control" id="round-duration" v-model="roundDurationSeconds" />
+        </div>
+        <button class="btn btn-info" v-on:click="run" v-bind:disabled="isDisabled">Run</button>
+      </div>
     </div>
     <div v-if="running">
       <div class="combo-name">"{{ comboName }}"</div>
@@ -61,7 +65,9 @@ export default {
       return "";
     },
     roundDurationSeconds: function() {
-      return this.selectedFlow ? this.selectedFlow.minimumRoundDuration / 1000 : 100;
+      return this.selectedFlow
+        ? this.selectedFlow.minimumRoundDuration / 1000
+        : 100;
     }
   },
   methods: {
