@@ -36,8 +36,28 @@ async function createCombo(payload) {
     }
 }
 
+async function saveFlow(payload) {
+    try {
+        const response = await client.post('/flows', payload);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function getFlows() {
+    try {
+        const response = await client.get('/flows');
+        return response.data.flows;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export default {
     getCombos,
     getMoves,
-    createCombo
+    createCombo,
+    saveFlow,
+    getFlows
 }

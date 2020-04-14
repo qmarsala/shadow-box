@@ -1,7 +1,7 @@
 <template>
   <div class="card-columns">
     <div class="card" v-for="(move, index) in moves" :key="index">
-      <div class="card-body">
+      <div class="card-body text-center">
         <Move v-if="move" v-bind:moveData="move" v-bind:animate="false" />
         <button class="btn btn-light" v-on:click="onLearnClicked(move.shorthand)">Learn this move</button>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div :key="moveData.id" class="move-container mx-auto">
     <div>{{moveData.name}}</div>
-    <div class="move" v-bind:class="moveClass" v-bind:data-move="dataMove"></div>
+    <div class="move" v-bind:class="moveClass" v-bind:data-move="shorthand"></div>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   props: ["moveData", "animate"],
   computed: {
     ...mapState(["isSouthpawStanceEnabled"]),
-    dataMove: function() {
+    shorthand: function() {
       return `${this.moveData.shorthand}${
         this.isSouthpawStanceEnabled ? "-southpaw" : ""
       }`;
@@ -56,6 +56,7 @@ export default {
 .move-container {
   height: 320px;
   width: 300px;
+  text-align: center;
 }
 
 .move {

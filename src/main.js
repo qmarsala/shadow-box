@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 import store from './store';
 import FlowRunner from './components/FlowRunner';
-import FlowManager from './components/FlowManager';
+import FlowBuilder from './components/FlowBuilder';
 import ComboBuilder from './components/ComboBuilder';
 import Home from './components/Home';
 import LearnMove from './components/LearnMove';
@@ -14,8 +14,8 @@ Vue.config.productionTip = false;
 const routes = [
   { path: '/', component: Home },
   { path: '/run-flow', component: FlowRunner },
-  { path: '/configure-flow', component: FlowManager },
   { path: '/create-combo', component: ComboBuilder },
+  { path: '/create-flow', component: FlowBuilder },
   { path: '/learn-move/:shorthand', component: LearnMove, props: true }
 ];
 

@@ -1,22 +1,22 @@
+import api from "../api";
+
 const state = {
     running: false,
-    flowMoves: []
+    all: []
 }
 
 const getters = {}
 
 const actions = {
-    async createFlow({ commit }, combos) {
-        let flowMoves = [];
-        for (const combo of combos) {
-            for (const move of combo.moves) {
-                flowMoves.push({
-                    ...move,
-                    comboName: combo.name
-                });
-            }
+    async saveFlow({ commit }, flow) {
+        await api.saveFlow(flow);
+        commit("addFlow", flow);
+    },
+    async getAllFlows({ commit }) {
+        const flows = await api.getFlows();
+        if (flows.length > 0) {
+            commit('setFlows', flows);
         }
-        commit("setFlowMoves", flowMoves);
     },
     async start({ commit }) {
         commit("setRunning", true);
@@ -27,8 +27,11 @@ const actions = {
 }
 
 const mutations = {
-    setFlowMoves(state, flowMoves) {
-        state.flowMoves = flowMoves;
+    setFlows(state, flows) {
+        state.all = flows;
+    },
+    addFlow(state, flow) {
+        state.all.push(flow);
     },
     setRunning(state, running) {
         state.running = running;
