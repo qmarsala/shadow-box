@@ -38,7 +38,9 @@ export default {
   data: function() {
     return {
       selectedFlow: undefined,
-      currentMoveIndex: 0
+      roundDurationSeconds: 100,
+      currentMoveIndex: 0,
+      autoStopTimout: undefined
     };
   },
   computed: {
@@ -63,19 +65,12 @@ export default {
         return this.currentMove.comboName;
       }
       return "";
-    },
-    roundDurationSeconds: function() {
-      return this.selectedFlow
-        ? this.selectedFlow.minimumRoundDuration / 1000
-        : 100;
     }
   },
   methods: {
     run: async function() {
       if (this.running) return;
-      this.currentMoveIndex = 0;
       this.start();
-      setTimeout(() => this.stop(), this.roundDurationSeconds * 1000);
 
       while (this.running) {
         await this.sleep(this.currentMove.timing);
@@ -83,9 +78,15 @@ export default {
       }
     },
     start: function() {
+      this.currentMoveIndex = 0;
+      this.autoStopTimout = setTimeout(
+        () => this.stop(),
+        this.roundDurationSeconds * 1000
+      );
       this.$store.dispatch("flow/start");
     },
     stop: function() {
+      clearTimeout(this.autoStopTimout);
       this.$store.dispatch("flow/stop");
     },
     next: function() {
@@ -100,6 +101,9 @@ export default {
   },
   created: function() {
     this.$store.dispatch("flow/getAllFlows");
+  },
+  beforeDestroy: function() {
+    this.stop();
   }
 };
 </script>
