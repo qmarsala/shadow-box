@@ -1,7 +1,7 @@
 <template>
   <div :key="moveData.id" class="move-container mx-auto">
     <div>{{moveData.name}}</div>
-    <div class="move" v-bind:class="moveClass" v-bind:data-move="shorthand"></div>
+    <div class="move" v-bind:class="moveAnimation" v-bind:data-move="shorthand"></div>
   </div>
 </template>
 
@@ -12,41 +12,37 @@ export default {
   computed: {
     ...mapState(["isSouthpawStanceEnabled"]),
     shorthand: function() {
-      return `${this.moveData.shorthand}${
-        this.isSouthpawStanceEnabled ? "-southpaw" : ""
-      }`;
+      const southpawMap = {
+        B: "B",
+        S: "S",
+        R: "R",
+        "1": "2",
+        "2": "1",
+        "3": "4",
+        "4": "3",
+        "5": "6",
+        "6": "5"
+      };
+      return this.isSouthpawStanceEnabled 
+        ? southpawMap[this.moveData.shorthand] 
+        : this.moveData.shorthand;
     },
-    moveClass: function() {
+    moveAnimation: function() {
       if (!this.animate) return "";
 
-      let classString = "animated ";
-      switch (this.moveData.shorthand) {
-        case "B":
-          classString += "bounceIn";
-          break;
-        case "R":
-          classString += "rotateIn";
-          break;
-        case "S":
-          classString += "rotateInDownLeft";
-          break;
-        case "3":
-          classString += this.isSouthpawStanceEnabled ? "fadeInRight" : "fadeInLeft";
-          break;
-        case "4":
-          classString += this.isSouthpawStanceEnabled ? "fadeInLeft" : "fadeInRight";
-          break;
-        case "5":
-        case "6":
-          classString += "fadeInUp";
-          break;
-        case "1":
-        case "2":
-        default:
-          classString += "fadeIn";
-          break;
+      const moveAnimationMap = {
+        B: "bounceIn",
+        S: "rotateInDownLeft",
+        R: "rotateIn",
+        "1": "fadeIn",
+        "2": "fadeIn",
+        "3": "fadeInLeft",
+        "4": "fadeInRight",
+        "5": "fadeInUp",
+        "6": "fadeInUp"
       }
-      return classString;
+
+      return `animated ${moveAnimationMap[this.shorthand]}`;
     }
   }
 };
@@ -64,55 +60,32 @@ export default {
   background-repeat: no-repeat;
   height: 300px;
   width: 300px;
-  animation-duration: 350ms !important;
+  animation-delay: 100ms;
+  animation-duration: 200ms;
 }
 
 .move[data-move="1"] {
   background-image: url(../../assets/jab.png);
 }
 
-.move[data-move="1-southpaw"] {
-  background-image: url(../../assets/cross.png);
-}
-
 .move[data-move="2"] {
   background-image: url(../../assets/cross.png);
-}
-
-.move[data-move="2-southpaw"] {
-  background-image: url(../../assets/jab.png);
 }
 
 .move[data-move="3"] {
   background-image: url(../../assets/leadhook.png);
 }
 
-.move[data-move="3-southpaw"] {
-  background-image: url(../../assets/hook.png);
-}
-
 .move[data-move="4"] {
   background-image: url(../../assets/hook.png);
-}
-
-.move[data-move="4-southpaw"] {
-  background-image: url(../../assets/leadhook.png);
 }
 
 .move[data-move="5"] {
   background-image: url(../../assets/leaduppercut.png);
 }
 
-.move[data-move="5-southpaw"] {
-  background-image: url(../../assets/uppercut.png);
-}
-
 .move[data-move="6"] {
   background-image: url(../../assets/uppercut.png);
-}
-
-.move[data-move="6-southpaw"] {
-  background-image: url(../../assets/leaduppercut.png);
 }
 
 .move[data-move*="B"] {
