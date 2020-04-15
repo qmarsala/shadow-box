@@ -9,12 +9,26 @@
           v-bind:value="flow"
         >{{ flow.name }}</option>
       </select>
-      <div class="form-inline my-3">
-        <div class="form-group">
-          <label for="round-duration">Round Duration (in seconds)</label>
-          <input class="form-control" id="round-duration" v-model="roundDurationSeconds" />
+      <div class="form my-3">
+        <div class="form-group row row-cols-1 row-cols-sm-4">
+          <div class="col col-form-label">Round Duration</div>
+          <div class="col">
+            <input class="form-control" id="round-duration-minutes" v-model="roundDurationMinutes" />
+            <label for="round-duration-minutes">minutes</label>
+          </div>
+          <div class="col">
+            <input class="form-control" id="round-duration-seconds" v-model="roundDurationSeconds" />
+            <label for="round-duration-seconds">seconds</label>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-info w-100 my-1 my-sm-0"
+              v-on:click="run"
+              v-bind:disabled="isDisabled"
+            >Run</button>
+          </div>
         </div>
-        <button class="btn btn-info" v-on:click="run" v-bind:disabled="isDisabled">Run</button>
+        <div class="row row-cols-1 row-cols-sm-3 my-3"></div>
       </div>
     </div>
     <div v-if="running">
@@ -38,7 +52,8 @@ export default {
   data: function() {
     return {
       selectedFlow: undefined,
-      roundDurationSeconds: 100,
+      roundDurationMinutes: 1,
+      roundDurationSeconds: 30,
       currentMoveIndex: 0,
       autoStopTimout: undefined
     };
@@ -81,7 +96,7 @@ export default {
       this.currentMoveIndex = 0;
       this.autoStopTimout = setTimeout(
         () => this.stop(),
-        this.roundDurationSeconds * 1000
+        (this.roundDurationMinutes * 60 * 1000) + (this.roundDurationSeconds * 1000)
       );
       this.$store.dispatch("flow/start");
     },
