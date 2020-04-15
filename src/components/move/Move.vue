@@ -60,8 +60,8 @@ export default {
   background-repeat: no-repeat;
   height: 300px;
   width: 300px;
-  animation-delay: 100ms;
-  animation-duration: 300ms;
+  animation-delay: 50ms;
+  animation-duration: 350ms;
 }
 
 .move[data-move="1"] {
