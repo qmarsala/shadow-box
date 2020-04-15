@@ -61,7 +61,7 @@ export default {
   height: 300px;
   width: 300px;
   animation-delay: 100ms;
-  animation-duration: 350ms;
+  animation-duration: 300ms;
 }
 
 .move[data-move="1"] {
